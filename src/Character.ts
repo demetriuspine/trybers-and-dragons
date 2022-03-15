@@ -12,8 +12,9 @@ export default class Character implements Fighter {
   private _strength: number;
   private _defense: number;
   private _dexterity: number;
+  
   private _energy: Energy;
-
+  
   constructor(name: string) {
     this._race = new Elf(name, getRandomInt(1, 10));
     this._archetype = new Mage(name);
@@ -25,6 +26,41 @@ export default class Character implements Fighter {
     this._energy = {
       type_: this._archetype.energyType,
       amount: getRandomInt(1, 10),
+    };
+  }
+
+  public get race(): Race {
+    return this._race;
+  }
+
+  public get archetype(): Archetype {
+    return this._archetype;
+  }
+
+  public get maxLifePoints(): number {
+    return this._maxLifePoints;
+  }
+
+  public get lifePoints(): number {
+    return this._lifePoints;
+  }
+
+  public get strength(): number {
+    return this._strength;
+  }
+
+  public get defense(): number {
+    return this._defense;
+  }
+
+  public get dexterity(): number {
+    return this._dexterity;
+  }
+
+  public get energy(): Energy {
+    return {
+      type_: this._energy.type_,
+      amount: this._energy.amount,
     };
   }
 }
